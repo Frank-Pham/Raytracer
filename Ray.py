@@ -1,8 +1,18 @@
 import numpy
+
+def normalize(vector):
+    normal = numpy.linalg.norm(vector)
+
+    if normal == 0:
+        return vector
+
+    return vector/normal
+
+
 class Ray(object):
     def __init__(self, origin, direction):
         self.origin = origin
-        self.direction = direction.normalized()
+        self.direction = normalize(direction)
 
     def __repr__(self):
         return 'Ray(%s,%s' %(repr(self.origin), repr(self.direction))
