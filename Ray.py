@@ -1,6 +1,11 @@
 import numpy
 
 def normalize(vector):
+    """
+    Normalisiert einen Vektor
+    :param vector: Vektor
+    :return: Gibt normalisierten Vektor wieder
+    """
     normal = numpy.linalg.norm(vector)
 
     if normal == 0:
@@ -10,6 +15,7 @@ def normalize(vector):
 
 
 class Ray(object):
+    """Rayklasse"""
     def __init__(self, origin, direction):
         self.origin = origin
         self.direction = normalize(direction)

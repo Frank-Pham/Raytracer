@@ -1,6 +1,7 @@
 import numpy
-class CheckerboardMaterial(object):
 
+class CheckerboardMaterial(object):
+    """Klasse für ein Schachbrettmuster-Material"""
     def __init__(self, a, b, c):
         self.baseColor = (255, 255, 255)
         self.otherColor = (0,0,0)

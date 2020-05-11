@@ -1,6 +1,11 @@
 import numpy
 
 def normalize(vector):
+    """
+    Normalisiert einen Vektor
+    :param vector: Vektor
+    :return: Gibt normalisierten Vektor wieder
+    """
     normal = numpy.linalg.norm(vector)
 
     if normal == 0:
@@ -9,7 +14,9 @@ def normalize(vector):
     return vector/normal
 
 class Sphere(object):
-
+    """
+    Klasse die ein Objet in der 2d/3d-Welt darstellen soll
+    """
     def __init__(self,center,radius,rgb):
         self.center = center
         self.radius = radius
@@ -19,7 +26,12 @@ class Sphere(object):
         return 'Sphere (%s,%s)' %(repr(self.center), self.radius)
 
     def intersectionParameter(self, ray):
-        co = self.center - ray.origin
+        """
+        Überprüft Schnittpunkt Objekt zum Lichtstrahl
+        :param ray: Lichstrahl von der Kamera in die Szene
+        :return: None wenn kein Schnittpunkt oder Schnittpunkt
+        """
+        co = self.center - ray.origin #Vektor Kreismittelpunkt zum Strahl
         v = numpy.dot(co,ray.direction)
         discriminant = v*v - numpy.dot(co,co) + self.radius * self.radius
 

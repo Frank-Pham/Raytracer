@@ -1,6 +1,11 @@
 import numpy
 
 def normalize(vector):
+    """
+    Normalisiert einen Vektor
+    :param vector: Vektor
+    :return: Gibt normalisierten Vektor wieder
+    """
     normal = numpy.linalg.norm(vector)
 
     if normal == 0:
@@ -9,6 +14,7 @@ def normalize(vector):
     return vector/normal
 
 class Triangle(object):
+    """Dreiecksklasse"""
     def __init__(self, a, b, c, rgb):
         self.a = a
         self.b = b
@@ -37,7 +43,6 @@ class Triangle(object):
             return None
 
     def normalAt(self,p):
-        """return self.u.cross(self.v).normalized()"""
         return normalize(numpy.cross(self.u,self.v))
 
     def colorAt(self,ray):

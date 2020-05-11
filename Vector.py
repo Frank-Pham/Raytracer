@@ -1,5 +1,5 @@
 class Vector:
-    """Klasse die Vektoren darstellen soll.(Ortsvektor als standard gesetzt)"""
+    """Klasse die Vektoren darstellen kann.(Ortsvektor als standard gesetzt)"""
     def __init__(self,x = 0.0 ,y = 0.0, z= 0.0):
         self.x = x
         self.y = y

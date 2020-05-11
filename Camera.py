@@ -2,7 +2,7 @@ import numpy
 from Ray import Ray
 
 class Camera(object):
-
+    """Kameraklasse """
     def __init__(self, e, c, up, fov):
         self.e = e
         self.c = c
@@ -16,6 +16,7 @@ class Camera(object):
 
 
     def setup_CamerView(self,imageWidth,imageHeight):
+        """Kamerasettings Abbildungsbereich - Pixelhöhe Pixelbreite"""
         self.aspectRatio = imageWidth / imageHeight
         self.alpha = self.fov / 2
         self.height = 2 * numpy.tan(self.alpha)
@@ -25,7 +26,7 @@ class Camera(object):
         self.pixelHeight = self.height / (imageHeight - 1)
 
     def calc_CameraRay(self,x,y):
-
+        """Berechnet einen Strahl von der Kamera in Pixel"""
         xcomp = self.s * (x * self.pixelWidth - self.width / 2)
         ycomp = self.u * (y * self.pixelHeight - self.height / 2)
         return Ray(self.e, self.f + xcomp + ycomp)

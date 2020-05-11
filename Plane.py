@@ -1,6 +1,11 @@
 import numpy
 
 def normalize(vector):
+    """
+    Normalisiert einen Vektor
+    :param vector: Vektor
+    :return: Gibt normalisierten Vektor wieder
+    """
     normal = numpy.linalg.norm(vector)
 
     if normal == 0:
@@ -9,7 +14,7 @@ def normalize(vector):
     return vector/normal
 
 class Plane(object):
-
+    """Ebenenklasse"""
     def __init__(self, point, normal, rgb):
         self.point = point
         self.normal = normalize(normal)
