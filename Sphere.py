@@ -1,5 +1,12 @@
 import numpy
 
+def normalize(vector):
+    normal = numpy.linalg.norm(vector)
+
+    if normal == 0:
+        return vector
+
+    return vector/normal
 
 class Sphere(object):
 
@@ -24,7 +31,7 @@ class Sphere(object):
 
 
     def normalAt(self, p):
-        return (p - self.center.normalized())
+        return normalize(p - self.center)
 
     def colorAt(self,ray):
         return self.rgb

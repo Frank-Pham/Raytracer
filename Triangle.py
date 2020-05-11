@@ -1,4 +1,13 @@
 import numpy
+
+def normalize(vector):
+    normal = numpy.linalg.norm(vector)
+
+    if normal == 0:
+        return vector
+
+    return vector/normal
+
 class Triangle(object):
     def __init__(self, a, b, c, rgb):
         self.a = a
@@ -29,7 +38,7 @@ class Triangle(object):
 
     def normalAt(self,p):
         """return self.u.cross(self.v).normalized()"""
-        return numpy.normalized(numpy.cross(self.u,self.v))
+        return normalize(numpy.cross(self.u,self.v))
 
     def colorAt(self,ray):
         return self.rgb

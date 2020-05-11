@@ -18,8 +18,4 @@ class Ray(object):
         return 'Ray(%s,%s' %(repr(self.origin), repr(self.direction))
 
     def pointAtParameter(self, t):
-        return self.origin + self.direction.scale(t)
-
-    def normalized(self):
-        #TODO
-        pass
+        return self.origin + self.direction*t
