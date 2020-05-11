@@ -14,8 +14,8 @@ import math
 from PIL import Image
 
 """---Bild Settings---"""
-IMAGE_WIDTH = 100
-IMAGE_HEIGHT = 100
+IMAGE_WIDTH = 400
+IMAGE_HEIGHT = 400
 BACKGROUND_COLOR = (0,0,0)
 CHECKERBOARD = CheckerboardMaterial(0,0,0)
 
@@ -23,23 +23,22 @@ image = Image.new('RGB', (IMAGE_WIDTH,IMAGE_HEIGHT))
 
 """---Kamera-Settings---"""
 e = numpy.array([0,1.8,10])
-c = numpy.array([0,1,0])
-up = numpy.array([0,-1,0])
+c = numpy.array([0,3,0])
+up = numpy.array([0,1,0]) #UP Vektor in Minusbereich dreht das Eichhörnchen
 fieldOfView = 45
 
-"""---UP Vektor in Minusbereich dreht das Eichhörnchen---"""
 camera = Camera(e,c,up,fieldOfView)
 
 
 """---Objekte für die Szene. render_squirrel() verwenden um das Eichhörnchen zu rendern---"""
-redSphere = Sphere(numpy.array([2.5,6.5,-10]),2.1,(250,0,0))
-greenSphere = Sphere(numpy.array([-2.5,6.5,-10]),2.1,(0,250,0))
-blueSphere = Sphere(numpy.array([0,2,-10]),2.1,(0,0,250))
-triangle = Triangle(numpy.array([2.5,6.5,-10]), numpy.array([-2.5, 6.5, -10]), numpy.array([0,2,-10]),(255,255,0))
+redSphere = Sphere(numpy.array([2.5,6.5,-15]),2.1,(250,0,0))
+greenSphere = Sphere(numpy.array([-2.5,6.5,-15]),2.1,(0,250,0))
+blueSphere = Sphere(numpy.array([0,2,-15]),2.1,(0,0,250))
+triangle = Triangle(numpy.array([2.5,6.5,-15]), numpy.array([-2.5, 6.5, -15]), numpy.array([0,2,-15]),(255,255,0))
 plane = Plane(numpy.array([0, 10, 0]), numpy.array([0, -10, -2]),CHECKERBOARD)
 
 objectlist = [redSphere, greenSphere, blueSphere,triangle, plane]
-light = Light(numpy.array([-40,-40,10]),(255,255,255))
+light = Light(numpy.array([30,-30,10]),(255,255,255))
 
 maxlevel = 1
 
@@ -82,11 +81,10 @@ def trace_Ray(level, ray):
 
 def shade(level, hitPointData):
     directColor = compute_DirectLight(hitPointData)
-    """reflectedRay = computeReflectedRay(hitPointData)
+    reflectedRay = computeReflectedRay(hitPointData)
     reflectedColor = trace_Ray(level+1, reflectedRay)
 
-    return directColor + reflection * numpy.array(reflectedColor)"""
-    return directColor
+    return directColor + reflection * numpy.array(reflectedColor)
 
 
 def compute_DirectLight(hitPointData):
@@ -263,15 +261,14 @@ def main():
     start_timer = time.perf_counter()
     camera.setup_CamerView(IMAGE_WIDTH,IMAGE_HEIGHT)
 
-    render_Squirrel()
+    #render_Squirrel()
     #process_Render()
     #thread_Render()
-    #ray_Casting(camera)
+    ray_Casting(camera)
 
     finish_timer = time.perf_counter()
     image.show()
-    #image.save("Reflection_Spheres.png")
-    image.save("Squirrel4.png")
+    image.save("Reflection_Spheres 3.png")
     print(f'Renderzeit: {round(finish_timer - start_timer, 3)} Sekunden')
     print(f'Renderzeit: {round(finish_timer - start_timer, 3)/60} Minuten')
 
