@@ -13,8 +13,8 @@ import time
 import math
 from PIL import Image
 
-IMAGE_WIDTH = 400
-IMAGE_HEIGHT = 400
+IMAGE_WIDTH = 300
+IMAGE_HEIGHT = 300
 BACKGROUND_COLOR = (0,0,0)
 CHECKERBOARD = CheckerboardMaterial(0,0,0)
 
@@ -22,8 +22,8 @@ image = Image.new('RGB', (IMAGE_WIDTH,IMAGE_HEIGHT))
 
 """Kamera-Settings"""
 e = numpy.array([0,1.8,10])
-c = numpy.array([0,3,0])
-up = numpy.array([0,1,0])
+c = numpy.array([0,1,0])
+up = numpy.array([0,-1,0])
 fieldOfView = 45
 
 """UP Vektor in Minusbereich dreht das Eichhörnchen"""
@@ -205,14 +205,15 @@ def main():
     start_timer = time.perf_counter()
     camera.setup_CamerView(IMAGE_WIDTH,IMAGE_HEIGHT)
 
-    #render_Squirrel()
+    render_Squirrel()
     #process_Render()
     #thread_Render()
     ray_Casting(camera)
 
     finish_timer = time.perf_counter()
     image.show()
-    image.save("Reflection_Spheres.png")
+    #image.save("Reflection_Spheres.png")
+    image.save("Squirrel.png")
     print(f'Renderzeit: {round(finish_timer - start_timer, 3)} Sekunden')
 
 
