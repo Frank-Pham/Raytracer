@@ -23,3 +23,6 @@ Threading/Processing: ~220 seconds
 
 200x 200px Squirrel:\
 Normal without reflections: 48 minutes
+
+![png](https://github.com/Frank-Pham/Raytracer/blob/master/Reflection_Spheres.png)
+
