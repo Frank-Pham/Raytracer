@@ -18,7 +18,7 @@ Don't forget to comment out the other methods while you use one of these methods
 
 Render times:\
 400x400px Sphere,Triangle,Floor Scene: \
-normal:54,205 Sekunden\
+normal:54,205 seconds\
 Threading/Processing: ~220 seconds
 
 200x 200px Squirrel:\
